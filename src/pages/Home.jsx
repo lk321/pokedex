@@ -8,7 +8,7 @@ import PokeList from 'components/PokeList';
 function HomePage() {
   return (
     <Container>
-      <Typography variant="h2">Pokédex</Typography>
+      <Typography variant="h2">Pokédex with SWR</Typography>
       <PokeList />
     </Container>
   );

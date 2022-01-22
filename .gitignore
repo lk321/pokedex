@@ -29,3 +29,5 @@ yarn-error.log*
 
 # cache files
 .eslintcache
+
+.vercel
