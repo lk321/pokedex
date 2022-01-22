@@ -11,7 +11,7 @@ import {
 
 function PokeCard({ name, image }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card>
       <CardMedia
         component="img"
         alt="green iguana"
@@ -24,7 +24,7 @@ function PokeCard({ name, image }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" variant="outlined">Learn More</Button>
+        <Button size="small" color="primary">Learn More</Button>
       </CardActions>
     </Card>
   );
