@@ -9,14 +9,22 @@ import {
   Typography,
 } from '@mui/material';
 
-function PokeCard({ name, image }) {
+function PokeCard({ name, url }) {
+  const pokemonId = url.split('/')[url.split('/').length - 2];
+  const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
+
+  const handleClick = () => {
+    console.log('clicked', url);
+  };
+
   return (
     <Card>
       <CardMedia
-        component="img"
         alt="green iguana"
+        component="img"
+        loading="lazy"
         height="140"
-        image={image}
+        src={imageUrl}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -24,7 +32,13 @@ function PokeCard({ name, image }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary">Learn More</Button>
+        <Button
+          size="small"
+          color="primary"
+          onClick={handleClick}
+        >
+          Learn More
+        </Button>
       </CardActions>
     </Card>
   );
@@ -32,7 +46,7 @@ function PokeCard({ name, image }) {
 
 PokeCard.propTypes = {
   name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default PokeCard;

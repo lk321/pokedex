@@ -3,7 +3,6 @@ export default function Card() {
     MuiCard: {
       styleOverrides: {
         root: {
-          width: 160,
           cursor: 'pointer',
           boxShadow: 'none',
           borderRadius: '8px',

@@ -1,4 +1,3 @@
-import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import ThemeCofing from 'theme';
@@ -7,13 +6,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <StrictMode>
-    <BrowserRouter>
-      <ThemeCofing>
-        <App />
-      </ThemeCofing>
-    </BrowserRouter>
-  </StrictMode>,
+  <BrowserRouter>
+    <ThemeCofing>
+      <App />
+    </ThemeCofing>
+  </BrowserRouter>,
   document.getElementById('root'),
 );
 
