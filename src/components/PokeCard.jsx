@@ -13,10 +13,6 @@ function PokeCard({ name, url }) {
   const pokemonId = url.split('/')[url.split('/').length - 2];
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
 
-  const handleClick = () => {
-    console.log('clicked', url);
-  };
-
   return (
     <Card>
       <CardMedia
@@ -35,7 +31,6 @@ function PokeCard({ name, url }) {
         <Button
           size="small"
           color="primary"
-          onClick={handleClick}
         >
           Learn More
         </Button>
