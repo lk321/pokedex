@@ -4,7 +4,7 @@ import useSWRInfinite from 'swr/infinite';
 
 import PokeCard from 'components/PokeCard';
 import fetcher from 'utils/fetcher';
-import useLazyLoad from 'hooks/useLazyLoad';
+import useInfiniteScroll from 'hooks/useInfiniteScroll';
 
 const PAGE_SIZE = 25;
 const getKey = (pageIndex, previousPageData) => {
@@ -20,15 +20,19 @@ function PokeList() {
     data,
     error,
     setSize,
-  } = useSWRInfinite(getKey, fetcher);
+  } = useSWRInfinite(
+    getKey,
+    (uri) => fetcher(uri).then((res) => res.results),
+    { initialSize: 0, revalidateFirstPage: false },
+  );
+
+  const { visorRef } = useInfiniteScroll({
+    onNearOfVisor: () => {
+      setSize((size) => size + 1);
+    },
+  });
 
   if (!data && error) return <CircularProgress />;
-
-  const handleCatchMorePokemon = () => {
-    setSize((size) => size + 1);
-  };
-
-  const { fromRef } = useLazyLoad({ onLoad: handleCatchMorePokemon });
 
   const pokemons = data?.flat() ?? [];
 
@@ -54,7 +58,7 @@ function PokeList() {
           </Grid>
         ))
       }
-      <div ref={fromRef} />
+      <div ref={visorRef} />
     </Grid>
   );
 }
