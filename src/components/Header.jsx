@@ -12,8 +12,9 @@ function Header() {
       alignItems="center"
       justifyContent="space-between"
       spacing={2}
+      marginBottom={5}
     >
-      <Typography variant="h2">Pokédex</Typography>
+      <Typography variant="h2" sx={{ color: 'text.primary' }}>Pokédex</Typography>
       <CustomSwitch />
     </Stack>
   );
