@@ -1,18 +1,16 @@
-import { useState, useMemo, createContext } from 'react';
+import { useMemo, createContext } from 'react';
 import PropTypes from 'prop-types';
+import useLocalStorage from 'hooks/useLocalStorage';
 
 export const ApplicationContext = createContext({ toggleMode: () => null });
 
 function ApplicationProvider({ children }) {
-  const [mode, setMode] = useState(() => window.localStorage.getItem('@theme') ?? 'light');
-  const saveLocalStorage = () => {
-    window.localStorage.setItem('@theme', mode);
-    return window.localStorage.getItem('@theme');
-  };
+  const [mode, setMode] = useLocalStorage('@theme', 'light');
+
   const value = useMemo(() => ({
     mode,
     toggleMode: () => {
-      setMode(() => (saveLocalStorage() === 'light' ? 'dark' : 'light'));
+      setMode(mode === 'light' ? 'dark' : 'light');
     },
   }), [mode]);
 
