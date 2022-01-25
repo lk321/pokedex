@@ -21,6 +21,9 @@ function PokeCard({ name, url }) {
         loading="lazy"
         height="140"
         src={imageUrl}
+        sx={{
+          objectFit: 'contain',
+        }}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

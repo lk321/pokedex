@@ -1,15 +1,13 @@
 import {
   Container,
-  Typography,
 } from '@mui/material';
 import PokeList from 'components/PokeList';
-import CustomSwitch from 'components/CustomSwitch';
+import Header from 'components/Header';
 
 function HomePage() {
   return (
     <Container>
-      <CustomSwitch />
-      <Typography variant="h2">Pokédex with SWR</Typography>
+      <Header />
       <PokeList />
     </Container>
   );
