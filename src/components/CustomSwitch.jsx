@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
 import {
   FormControlLabel,
@@ -6,6 +6,8 @@ import {
   FormGroup,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
+
+import { ApplicationContext } from 'Contexts/Application';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -26,7 +28,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
       '& + .MuiSwitch-track': {
         opacity: 1,
         backgroundColor:
-                      theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
+          theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
       },
     },
   },
@@ -56,16 +58,12 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 function CustomSwitch() {
-  const [themes, setTheme] = useState(false);
-  const changeTheme = () => {
-    setTheme(!themes);
-    console.log(themes);
-  };
+  const { mode, toggleMode } = useContext(ApplicationContext);
 
   return (
     <FormGroup>
       <FormControlLabel
-        control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked={themes} onChange={changeTheme} />}
+        control={<MaterialUISwitch sx={{ m: 1 }} checked={mode === 'dark'} onChange={toggleMode} />}
         label=""
       />
     </FormGroup>
