@@ -1,4 +1,5 @@
 export default {
+  mode: 'dark',
   primary: {
     ligth: '#ff5a36',
     main: '#ff0000',

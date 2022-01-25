@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-
+import { useNavigate } from 'react-router-dom';
 import {
   Card,
   CardActions,
@@ -10,8 +10,11 @@ import {
 } from '@mui/material';
 
 function PokeCard({ name, url }) {
+  const navigate = useNavigate();
   const pokemonId = url.split('/')[url.split('/').length - 2];
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
+
+  const goToPokemon = () => navigate(`/pokemon/${pokemonId}`);
 
   return (
     <Card>
@@ -21,6 +24,9 @@ function PokeCard({ name, url }) {
         loading="lazy"
         height="140"
         src={imageUrl}
+        sx={{
+          objectFit: 'contain',
+        }}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -31,6 +37,7 @@ function PokeCard({ name, url }) {
         <Button
           size="small"
           color="primary"
+          onClick={goToPokemon}
         >
           Learn More
         </Button>
