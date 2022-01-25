@@ -4,12 +4,15 @@ import PropTypes from 'prop-types';
 export const ApplicationContext = createContext({ toggleMode: () => null });
 
 function ApplicationProvider({ children }) {
-  const [mode, setMode] = useState('light');
-
+  const [mode, setMode] = useState(() => window.localStorage.getItem('@theme') ?? 'light');
+  const saveLocalStorage = () => {
+    window.localStorage.setItem('@theme', mode);
+    return window.localStorage.getItem('@theme');
+  };
   const value = useMemo(() => ({
     mode,
     toggleMode: () => {
-      setMode(mode === 'light' ? 'dark' : 'light');
+      setMode(() => (saveLocalStorage() === 'light' ? 'dark' : 'light'));
     },
   }), [mode]);
 
