@@ -11,10 +11,7 @@ function ThemeCofing({ children }) {
   const { mode } = useContext(ApplicationContext);
 
   const theme = createTheme({
-    palette: {
-      ...palette,
-      mode,
-    },
+    palette: palette(mode),
   });
   theme.components = componentOverrides(theme);
 
