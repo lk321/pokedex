@@ -40,7 +40,7 @@ function PokeCard({ name, url }) {
           color="primary"
           onClick={goToPokemon}
         >
-          Learn More
+          Gotcha
         </Button>
       </CardActions>
     </Card>
