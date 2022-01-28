@@ -1,15 +1,31 @@
-export default function Card() {
+export default function Card(theme) {
   return {
     MuiCard: {
       styleOverrides: {
         root: {
           cursor: 'pointer',
-          boxShadow: 'none',
-          borderRadius: '8px',
-          border: '1px solid #e0e0e0',
-          '&:hover': {
-            boxShadow: '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)',
-          },
+          boxShadow: theme.customShadows.z12,
+          borderRadius: theme.shape.borderRadiusMd,
+          position: 'relative',
+          zIndex: 0,
+        },
+      },
+    },
+    MuiCardHeader: {
+      defaultProps: {
+        titleTypographyProps: { variant: 'h6' },
+        subheaderTypographyProps: { variant: 'body2' },
+      },
+      styleOverrides: {
+        root: {
+          padding: theme.spacing(3, 3, 0),
+        },
+      },
+    },
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          padding: theme.spacing(3),
         },
       },
     },

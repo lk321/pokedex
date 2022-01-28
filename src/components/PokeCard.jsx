@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -39,7 +40,7 @@ function PokeCard({ name, url }) {
           color="primary"
           onClick={goToPokemon}
         >
-          Learn More
+          Gotcha
         </Button>
       </CardActions>
     </Card>
@@ -51,4 +52,4 @@ PokeCard.propTypes = {
   url: PropTypes.string.isRequired,
 };
 
-export default PokeCard;
+export default memo(PokeCard, (prevProps, nextProps) => prevProps.name === nextProps.name);
