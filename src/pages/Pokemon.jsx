@@ -13,6 +13,7 @@ import fetcher from 'utils/fetcher';
 
 import Header from 'components/Header';
 import { TYPES } from 'utils/constants';
+import TabsIcons from 'components/Tabs';
 
 function Pokemon() {
   const { id } = useParams();
@@ -71,6 +72,7 @@ function Pokemon() {
           </Stack>
         </Stack>
       </Grid>
+      <TabsIcons />
     </Container>
   );
 }
