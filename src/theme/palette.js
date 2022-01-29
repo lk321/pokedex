@@ -1,7 +1,8 @@
-const GRAY = {
+export const GREY = {
   0: '#ffffff',
   100: '#f9fafb',
   400: '#e1e7ef',
+  500: '#919EAB',
   600: '#8e99ab',
   800: '#212b36',
 };
@@ -24,9 +25,10 @@ export default function palette(mode) {
       contrastText: '#000000',
     },
     text: {
-      primary: isLigth ? GRAY[800] : '#ffffff',
-      secondary: isLigth ? GRAY[600] : GRAY[400],
-      disabled: isLigth ? GRAY[400] : GRAY[600],
+      primary: isLigth ? GREY[800] : '#ffffff',
+      secondary: isLigth ? GREY[600] : GREY[400],
+      disabled: isLigth ? GREY[400] : GREY[600],
     },
+    grey: GREY,
   };
 }

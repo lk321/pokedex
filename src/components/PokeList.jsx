@@ -39,7 +39,7 @@ function PokeList() {
   return (
     <Grid
       container
-      spacing={2}
+      spacing={4}
     >
       {
         pokemons.map(({ name, url }) => (
