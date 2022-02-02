@@ -35,7 +35,7 @@ export default function palette(mode) {
     },
     background: {
       default: isLigth ? GREY[0] : GREY[800],
-      paper: isLigth ? GREY[600] : GREY[800],
+      paper: isLigth ? GREY[100] : GREY[800],
       neutral: isLigth ? GREY[100] : GREY[500_12],
     },
     grey: GREY,
