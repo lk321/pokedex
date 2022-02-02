@@ -3,6 +3,7 @@ import { useRoutes } from 'react-router-dom';
 import Layout from 'components/Layout';
 import PokedexPage from 'pages/Pokedex';
 import PokemonPage from 'pages/Pokemon';
+import NotFound from 'pages/NotFound';
 
 const Router = () => useRoutes([
   {
@@ -14,7 +15,7 @@ const Router = () => useRoutes([
   },
   {
     path: '*',
-    element: <h1>404</h1>,
+    element: <NotFound />,
   },
 ]);
 

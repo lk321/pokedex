@@ -7,9 +7,15 @@ import {
   Chip,
   Typography,
   CircularProgress,
-  Card,
 } from '@mui/material';
 import fetcher from 'utils/fetcher';
+
+import
+{
+  FaTextHeight,
+  FaDownload,
+} from 'react-icons/fa';
+import { BsFillFlagFill } from 'react-icons/bs';
 
 import { TYPES } from 'utils/constants';
 
@@ -25,16 +31,8 @@ function Pokemon() {
   if (!data) return <CircularProgress />;
 
   return (
-    <Grid
-      container
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Stack
-        spacing={2}
-        justifyContent="center"
-        alignItems="center"
-      >
+    <Grid container justifyContent="center" alignItems="center">
+      <Stack spacing={2} justifyContent="center" alignItems="center">
         <Avatar
           alt={data.name}
           src={data.sprites.front_default}
@@ -51,12 +49,9 @@ function Pokemon() {
         </Typography>
         <Typography variant="h6" sx={{ color: 'text.primary' }}>
           #
-          {(`00${data.id}`).slice(-3)}
+          {`00${data.id}`.slice(-3)}
         </Typography>
-        <Stack
-          spacing={1}
-          direction="row"
-        >
+        <Stack spacing={1} direction="row">
           {data.types.map(({ slot, type }) => (
             <Chip
               key={slot}
@@ -66,19 +61,44 @@ function Pokemon() {
             />
           ))}
         </Stack>
-        <Grid>
-          <Card
-            sx={{
-              p: 6,
-              borderRadius: 6,
-              boxShadow: 'none',
-              borderWidth: 1,
-              borderColor: 'border.light',
-              borderStyle: 'solid',
-            }}
+        <Grid sx={{ p: 6, color: 'text.primary' }}>
+          <Stack
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+            spacing={6}
           >
-            <Typography variant="h6" sx={{ color: 'text.primary' }}>Detalles</Typography>
-          </Card>
+            <Stack
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              spacing={0.5}
+            >
+              <FaTextHeight />
+              <Typography variant="inherit"> Heigth </Typography>
+              <Typography variant="caption">0.88 </Typography>
+            </Stack>
+            <Stack
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              spacing={0.5}
+            >
+              <FaDownload />
+              <Typography variant="inherit"> Weight </Typography>
+              <Typography variant="caption">6.0 K </Typography>
+            </Stack>
+            <Stack
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              spacing={0.5}
+            >
+              <BsFillFlagFill />
+              <Typography variant="inherit"> Abilities </Typography>
+              <Typography variant="caption">Lighting Rod</Typography>
+            </Stack>
+          </Stack>
         </Grid>
       </Stack>
     </Grid>
