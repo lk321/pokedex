@@ -9,6 +9,7 @@ function MyGlobalStyles() {
       styles={{
         html: {
           backgroundColor: theme.palette.background.default,
+          fontFamily: 'sans-serif',
         },
       }}
     />

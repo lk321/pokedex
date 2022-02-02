@@ -6,12 +6,15 @@ import { ApplicationContext } from 'Contexts/Application';
 import GlobalStyles from './GlobalStyles';
 import componentOverrides from './overrides';
 import palette from './palette';
+import shadows, { customShadows } from './shadows';
 
 function ThemeCofing({ children }) {
   const { mode } = useContext(ApplicationContext);
 
   const theme = createTheme({
     palette: palette(mode),
+    shadows: shadows[mode],
+    customShadows: customShadows[mode],
   });
   theme.components = componentOverrides(theme);
 
