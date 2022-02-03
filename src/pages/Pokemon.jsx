@@ -16,6 +16,7 @@ import {
 } from '@mui/icons-material';
 
 import fetcher from 'utils/fetcher';
+
 import { TYPES } from 'utils/constants';
 
 function Pokemon() {
