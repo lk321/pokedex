@@ -7,12 +7,15 @@ import {
   Chip,
   Typography,
   CircularProgress,
+  IconButton,
 } from '@mui/material';
 
 import {
   FlagTwoTone as FlagTwoToneIcon,
   HeightTwoTone as HeightTwoToneIcon,
   FitnessCenterTwoTone as FitnessCenterTwoToneIcon,
+  ArrowBackIos as ArrowBackIosIcon,
+  ArrowForwardIos as ArrowForwardIosIcon,
 } from '@mui/icons-material';
 
 import fetcher from 'utils/fetcher';
@@ -22,11 +25,12 @@ import { TYPES } from 'utils/constants';
 function Pokemon() {
   const { id } = useParams();
   const [data, setData] = useState();
+  const [pokemonId, setPokemonId] = useState(id);
 
   useEffect(() => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+    const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`;
     fetcher(url).then(setData);
-  }, [id]);
+  }, [pokemonId]);
 
   if (!data) return <CircularProgress />;
 
@@ -35,17 +39,45 @@ function Pokemon() {
   return (
     <Grid container justifyContent="center" alignItems="center">
       <Stack spacing={2} justifyContent="center" alignItems="center">
-        <Avatar
-          alt={data.name}
-          src={data.sprites.front_default}
-          sx={{
-            height: 180,
-            width: 180,
-            borderWidth: 5,
-            borderColor: TYPES[principalType.name],
-            borderStyle: 'solid',
-          }}
-        />
+        <Stack
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          spacing={2}
+        >
+          <IconButton
+            onClick={() => setPokemonId(() => parseInt(pokemonId, 10) - 1)}
+            disabled={pokemonId === 1}
+          >
+            <ArrowBackIosIcon
+              fontSize="large"
+              sx={
+              { color: 'text.primary' }
+              }
+            />
+          </IconButton>
+          <Avatar
+            alt={data.name}
+            src={data.sprites.front_default}
+            sx={{
+              height: 180,
+              width: 180,
+              borderWidth: 5,
+              borderColor: TYPES[principalType.name],
+              borderStyle: 'solid',
+            }}
+          />
+          <IconButton
+            onClick={() => setPokemonId(() => parseInt(pokemonId, 10) + 1)}
+          >
+            <ArrowForwardIosIcon
+              fontSize="large"
+              sx={
+              { color: 'text.primary' }
+              }
+            />
+          </IconButton>
+        </Stack>
         <Typography variant="h4" sx={{ color: 'text.primary' }}>
           {data.name}
         </Typography>
